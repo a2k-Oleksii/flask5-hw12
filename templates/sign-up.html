@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block additional_styles %}
+    <link rel="stylesheet" href="/static/css/sign_up.css">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card">
+                    <h2 class="card-title text-center">Sign Up</h2>
+                    <div class="card-body py-md-4">
+                        <form action="/sign-up" method="POST">
+                            {% if error %}
+                                <h5 class="active" style="color:red"> {{ error }} </h5>
+                            {% endif %}
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="first_name" id="first_name"
+                                       placeholder="First name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="last_name" id="last_name"
+                                       placeholder="Last name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" id="username"
+                                       placeholder="Username">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" class="form-control" id="password"
+                                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                       title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                       placeholder="Password">
+                            </div>
+                            {#                            <div class="form-group">#}
+                            {#                                <input type="password" class="form-control" id="confirm-password"#}
+                            {#                                       placeholder="confirm-password">#}
+                            {#                            </div>#}
+                            <h6 style="color:forestgreen">Password must contain the following: - <b>lowercase</b>
+                                letter; - <b>capital (UPPERCASE)</b> letter; - <b>number</b>; - Minimum <b>8
+                                    characters</b></h6>
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                <a href="/sign-in">Login</a>
+                                <button type="submit" class="btn btn-primary">Create Account</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
