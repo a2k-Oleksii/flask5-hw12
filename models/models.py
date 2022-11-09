@@ -39,24 +39,10 @@ class User(db.Model):
             raise ValueError("You need add last_name")
         return last_name
 
-    @validates(username)
+    @validates("username")
     def validate_username(self, key, username):
         if username == "":
             raise ValueError("You need add last_name")
         elif User.username == username:
             raise ValueError("This username is taken please select another")
         return username
-
-    @validates("email")
-    def validate_email(self, key, email):
-        if email == "":
-            raise ValueError("You need add email")
-        elif "@" not in email:
-            raise ValueError("Email need has '@' ")
-        return email
-
-    @validates(password)
-    def validate_password(self, key, password):
-        pass
-        return password
-

@@ -34,7 +34,6 @@ def sign_up():
             return render_template("sign-up.html", error=ex)
         except IntegrityError:
             return render_template("sign-up.html", error="This username or email address is taken please select another")
-
         session["user"] = user.id
         return redirect("/")
     else:
